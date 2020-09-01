@@ -4,7 +4,7 @@
 
 * Creation Date : 28-08-2020
 
-* Last Modified : Friday 28 August 2020 02:48:31 PM
+* Last Modified : Tuesday 01 September 2020 02:42:23 PM
 
 * Created By :  Bhaskar Tallamraju
 
@@ -52,27 +52,20 @@ func deletenode(root *node, val int) *node {
     if root == nil {
         return root
     }
-
     if root.data > val {
         root.link[LEFT] = deletenode(root.link[LEFT], val)
     } else if root.data < val {
         root.link[RIGHT] = deletenode(root.link[RIGHT], val)
-    } else { // matched the data
+    } else {                                                          // matched the data
         if root.link[LEFT] == nil && root.link[RIGHT] == nil {        // case 1, no children
-            //free(root);
             root = nil;
         } else if root.link[LEFT] != nil && root.link[RIGHT] == nil { // case 2.a, one child - left
-            temp := root.link[LEFT]
-            //free(root);
-            root = temp
+            root = root.link[LEFT]
         } else if root.link[LEFT] == nil && root.link[RIGHT] != nil { // case 2.b, one child - right
-            temp := root.link[RIGHT]
-            //free(root);
-            root = temp
-        } else {                                                        // case 3, both children
-            temp := findmin(root.link[RIGHT])
-            root.data = temp.data
-            root.link[RIGHT] = deletenode(root.link[RIGHT], temp.data)
+            root = root.link[RIGHT]
+        } else {                                                      // case 3, both children
+            root.data = findmin(root.link[RIGHT]).data
+            root.link[RIGHT] = deletenode(root.link[RIGHT], root.data)
         }
     }
 
@@ -82,8 +75,7 @@ func deletenode(root *node, val int) *node {
 /* insert the newly created node in the right place in BST */
 func insert(root *node, val int) *node {
     if root == nil {
-        temp := &node{data: val,  }
-        root = temp
+        root = &node{data: val,  }  // initialize the node
     } else {
         if root.data > val {
             root.link[LEFT] = insert(root.link[LEFT], val)
@@ -172,7 +164,7 @@ func spiralorder(root *node, level, toggle int) {
 }
 
 func main() {
-    toggle := 1
+    var toggle int = 1
     var tree_root *node
     array := []int{1, 9, 8, 6, 100, 150, 20, 25, 9, 16, -1, 3, 5, 7, 11, 13, 210, 23, 45, 38, 93, 0, }
 
