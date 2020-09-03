@@ -4,7 +4,7 @@
 
 * Creation Date : 02-09-2020
 
-* Last Modified : Thursday 03 September 2020 08:44:50 AM
+* Last Modified : Thursday 03 September 2020 10:19:46 AM
 
 * Created By :  Bhaskar Tallamraju
 
@@ -26,6 +26,7 @@ import (
     "fmt"
 )
 
+// global variables
 // the node for each element in the stack
 type stack struct {
     data int
@@ -45,8 +46,7 @@ func push(topstack **stack, data int) {
     } else {
         top++
         fmt.Println(data)
-        temp := &stack{data: data, next: *topstack,}
-        *topstack = temp
+        *topstack = &stack{data: data, next: *topstack,}
     }
 }
 
@@ -63,8 +63,6 @@ func pop(topstack **stack) {
 
 func main() {
     var topstack *stack = nil
-    temp := &stack{data: 0, next: nil,}
-    topstack = temp
 
     // push elements from 1 to index, test if stack overflows after reaching MAX_STACK
     for i := 0; i<MAX_STACK+4; i++ {

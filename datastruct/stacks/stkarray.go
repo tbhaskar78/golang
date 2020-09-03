@@ -4,7 +4,7 @@
 
 * Creation Date : 03-09-2020
 
-* Last Modified : Thursday 03 September 2020 08:56:48 AM
+* Last Modified : Thursday 03 September 2020 10:21:12 AM
 
 * Created By :  Bhaskar Tallamraju
 
@@ -22,10 +22,16 @@ import (
     "fmt"
 )
 
+//global variables
+
+// indicate the max stack size
 const MAX_ELEMENTS int = 10
+// the array ds to hold the stack
 var stack [MAX_ELEMENTS]int
+// the index counter
 var top int = -1
 
+/* push the numbers to the list, top of stack pointing to the last element */
 func push(data int) {
    if top >= (MAX_ELEMENTS-1) {
        fmt.Printf ("Stack overflow, cannot insert %v\n", data)
@@ -35,6 +41,7 @@ func push(data int) {
    }
 }
 
+/* pop the list, starting from top of stack */
 func pop() {
    if top == -1 {
       fmt.Printf ("Stack underflow, no more elements in the stack\n")
@@ -46,15 +53,17 @@ func pop() {
 }
 
 func main() {
-   for i := 0; i < MAX_ELEMENTS+2; i++ {
-      push(i+1)
-   }
-   fmt.Printf("After pushing elements 1-10, stack: %v\n", stack)
+    // push elements from 1 to index, test if stack overflows after reaching MAX_STACK
+    for i := 0; i < MAX_ELEMENTS+2; i++ {
+        push(i+1)
+    }
+    fmt.Printf("After pushing elements 1-10, stack: %v\n", stack)
 
-   for i := 0; i < MAX_ELEMENTS+4; i++ {
-      pop()
-   }
-   fmt.Printf("After popping elements 1-10, stack: %v\n", stack)
+    // pop elements in reverse, test if stack underflows after popping all elements
+    for i := 0; i < MAX_ELEMENTS+4; i++ {
+        pop()
+    }
+    fmt.Printf("After popping elements 1-10, stack: %v\n", stack)
 
-   return
+    return
 }
