@@ -1,6 +1,6 @@
 /****************************************
 
-* File Name : qarray.go
+* File Name : qllist.go
 
 * Creation Date : 03-09-2020
 
