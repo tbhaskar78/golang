@@ -6,4 +6,4 @@ My attempt is to write as many data structs as I can with golang and in turn lea
 
 1. [stacks](datastruct/stacks)
 2. [queue](datastruct/queue)
-3. [Binary Search Tree](datastruct/trees]
+3. [Binary Search Tree](datastruct/trees)
